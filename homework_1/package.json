@@ -19,7 +19,11 @@
     "url": "https://github.com/vsdmitriy17/nodeJs-homework/issues"
   },
   "homepage": "https://github.com/vsdmitriy17/nodeJs-homework#readme",
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^9.4.0",
+    "nanoid": "^3.3.4",
+    "yargs": "^17.5.1"
+  },
   "devDependencies": {
     "nodemon": "^2.0.19"
   }
