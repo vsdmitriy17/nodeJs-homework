@@ -11,7 +11,7 @@ program
 
 program.parse(process.argv);
 
-const argv = program.opts();
+const option = program.opts();
 
 async function invokeAction({ action, id, name, email, phone }) {
     switch (action) {
@@ -49,4 +49,4 @@ async function invokeAction({ action, id, name, email, phone }) {
 // invokeAction({ action: 'get', id: "2" });
 // invokeAction({ action: 'add', name: 'Vasay', email: 'vasay@mail.ru', phone: '+3800-506-50-46' });
 // invokeAction({ action: 'update', id: '8qTfD6csGmiV_WXdOgP_3', name: 'Vasay_2', email: 'vasay@mail.ru', phone: '+3800-506-50-37' });
-invokeAction(argv);
+invokeAction(option);
