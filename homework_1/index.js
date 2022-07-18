@@ -45,8 +45,4 @@ async function invokeAction({ action, id, name, email, phone }) {
     }
 }
 
-// invokeAction({ action: 'list' });
-// invokeAction({ action: 'get', id: "2" });
-// invokeAction({ action: 'add', name: 'Vasay', email: 'vasay@mail.ru', phone: '+3800-506-50-46' });
-// invokeAction({ action: 'update', id: '8qTfD6csGmiV_WXdOgP_3', name: 'Vasay_2', email: 'vasay@mail.ru', phone: '+3800-506-50-37' });
 invokeAction(option);
