@@ -36,10 +36,10 @@ const contactSchema = new Schema( // схема моделі contact
             type: Boolean,
             default: false,
         },
-        // owner: {
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'user',
-        // },
+        owner: {
+            type: Schema.Types.ObjectId,
+            ref: "user", // колекція юзерів
+        },
     },
     { // налаштування версії
         versionKey: false, // номер, кількість весій

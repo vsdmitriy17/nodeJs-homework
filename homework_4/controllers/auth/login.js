@@ -1,6 +1,9 @@
 const { User, schemas } = require("../../models/user");
 const { createError } = require("../../helpers");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+const { SECRET_KEY } = process.env;
 
 const login = async (req, res) => {
     const { error } = schemas.login.validate(req.body); // перевырка об'єкту який додаємо (req.body), валідація
@@ -18,7 +21,11 @@ const login = async (req, res) => {
     if (!comparePassword) {
         throw createError(401, 'Password is wrong');
     }
-    const token = "some_token"; // генерування токена
+    const payload = {
+        id: user._id,
+    }
+    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "24h" }); // генерування токена
+    await User.findByIdAndUpdate(user._id, {token});
     res.status(200).json({
         token,
     });

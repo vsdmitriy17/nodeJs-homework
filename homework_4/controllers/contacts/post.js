@@ -6,7 +6,8 @@ const post = async (req, res) => {
     if (error) {
         throw createError(400, error.message);
     }
-    const result = await Contact.create(req.body); // агументом до методу create() - повинен бути об'єкт
+    const { id: owner } = req.user; // забираэмо id юзера
+    const result = await Contact.create({ ...req.body, owner, }); // агументом до методу create() - повинен бути об'єкт
     res.status(200).json(result);
 }
 
