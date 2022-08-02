@@ -15,7 +15,7 @@ const authIdent = async (req, res, next) => { // мідлвара перевір
     try {
         const { id } = jwt.verify(token, SECRET_KEY); // забираємо айди (payload) з токену
         const user = await User.findById(id); // знаходимо юзера за id
-        if (!user) {
+        if (!user || !user.token) {
             next(createError(401));
         }
         req.user = user; // додаэмо user в request

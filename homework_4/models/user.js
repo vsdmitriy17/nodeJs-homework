@@ -15,9 +15,14 @@ const loginSchema = Joi.object({ // бібліотека для перевірк
     email: Joi.string().pattern(emailRegExp).required(),
 });
 
+const subscriptionUpdateSchema = Joi.object({
+    subscription: Joi.string().required(),
+});
+
 const schemas = {
     register: registerSchema,
     login: loginSchema,
+    subscriptionUpdate: subscriptionUpdateSchema,
 }
 
 const userSchema = new Schema( // схема моделі contact
