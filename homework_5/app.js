@@ -15,6 +15,7 @@ const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json()); // для контент тайп джейсон в req.body (інакше відповідь в req.body - андефайнд)
+app.use(express.static("public")); // всі файли котрі можна роздавати шукати в папці public
 
 app.use('/api/contacts', contactsRouter);
 app.use('/api/users', authRouter);

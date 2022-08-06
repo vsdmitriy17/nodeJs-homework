@@ -1,6 +1,7 @@
 const { User, schemas } = require("../../models/user");
 const { createError } = require("../../helpers");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt"); 
+const gravatar = require("gravatar"); // бібл. для генерування аватарок
 
 const register = async (req, res) => {
     const { error } = schemas.register.validate(req.body); // перевырка об'єкту який додаємо (req.body), валідація
@@ -14,8 +15,9 @@ const register = async (req, res) => {
         throw createError(409, `Email ${email} in use`);
     }
 
+    const avatarURL = gravatar.url(email);
     const hashPassword = await bcrypt.hash(password, 10); // хешування пароля
-    const result = await User.create({ ...req.body, password: hashPassword }); // створення нового user в базі
+    const result = await User.create({ ...req.body, password: hashPassword, avatarURL }); // створення нового user в базі
     res.status(201).json({
         email: result.email,
     });
